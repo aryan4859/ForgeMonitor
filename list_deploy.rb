@@ -9,7 +9,7 @@ http.use_ssl = true
 
 request = Net::HTTP::Get.new(url)
 request["accept"] = 'application/json'
-request["authorization"] = 'Bearer rnd_usZzwGeqcvE0wjc0dr3nAbiPBXOI'
+request["authorization"] = 'Bearer {token}'
 
 begin
   response = http.request(request)
