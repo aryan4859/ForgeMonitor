@@ -23,7 +23,7 @@ watch(windowWidth, (n) => (gridCount.value = n > 768 ? 45 : n > 400 ? 30 : 20));
           to="/"
           class="text-white text-3xl md:text-4xl font-semibold inline-flex items-center text-shadow-md shadow-purple-500"
         >
-          <Logo class="mr-4"></Logo> ForgeMonitor
+          <Logo class="mr-4"></Logo> Forge Monitor
         </NuxtLink>
       </div>
       <NuxtPage />
