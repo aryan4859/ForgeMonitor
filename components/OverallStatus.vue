@@ -1,47 +1,55 @@
 <script setup lang="ts">
-import { ParsedContent } from "@nuxt/content/dist/runtime/types"
-import { PropType } from "vue"
-import { statusColor } from "~~/utils/function"
-import { Report } from "~~/utils/interface"
+import { ParsedContent } from "@nuxt/content/dist/runtime/types";
+import { PropType } from "vue";
+import { statusColor } from "~~/utils/function";
+import { Report } from "~~/utils/interface";
 
 const props = defineProps({
-  report_data: Object as PropType<ParsedContent[] | Pick<ParsedContent, string>>,
-})
-const { $dayjs } = useNuxtApp()
+  report_data: Object as PropType<
+    ParsedContent[] | Pick<ParsedContent, string>
+  >,
+});
+const { $dayjs } = useNuxtApp();
 
 const todayUptimeList = computed(() => {
-  let report_data = Array.isArray(props.report_data) ? props.report_data : [props.report_data]
+  let report_data = Array.isArray(props.report_data)
+    ? props.report_data
+    : [props.report_data];
   return report_data.map((i) => {
-    if (!i) return
+    if (!i) return;
     let todayData: number[] = i.body
       .filter((j: Report) => $dayjs.utc(j.time).isToday())
-      .map((j: Report) => (j.status === "success" ? 1 : 0))
+      .map((j: Report) => (j.status === "success" ? 1 : 0));
 
-    return todayData.reduce((a, v) => a + v, 0) / todayData.length
-  })
-})
+    return todayData.reduce((a, v) => a + v, 0) / todayData.length;
+  });
+});
 
 const todayOverallUptime = computed(() => {
   if (todayUptimeList.value.find((i) => i >= 0 && i < 0.5)) {
-    return 0
+    return 0;
   } else if (todayUptimeList.value.find((i) => i >= 0.5 && i < 0.9)) {
-    return 0.5
+    return 0.5;
   } else {
-    return 1
+    return 1;
   }
-})
+});
 const todayOverallMessage = computed(() => {
-  const majorOutageCount = todayUptimeList.value.filter((i) => i >= 0 && i < 0.5).length
-  const partialOutageCount = todayUptimeList.value.filter((i) => i >= 0.5 && i < 0.9).length
+  const majorOutageCount = todayUptimeList.value.filter(
+    (i) => i >= 0 && i < 0.5
+  ).length;
+  const partialOutageCount = todayUptimeList.value.filter(
+    (i) => i >= 0.5 && i < 0.9
+  ).length;
 
   if (majorOutageCount) {
-    return `${majorOutageCount} Major Outage`
+    return `${majorOutageCount} Major Outage`;
   } else if (partialOutageCount) {
-    return `${partialOutageCount} Partial Outage`
+    return `${partialOutageCount} Partial Outage`;
   } else {
-    return "All Systems Operational"
+    return "All Systems Operational";
   }
-})
+});
 </script>
 
 <template>

@@ -9,7 +9,10 @@ const { data: incidents } = await useLazyAsyncData("reports", () =>
   queryContent("/incidents").sort({ title: 0 }).find()
 );
 const gridCount = useGridCount();
-useCustomHead("StatusBase Status Page");
+useCustomHead("Forge Monitor - Status Page", {
+  description:
+    "Real-time status page for Forge Monitor, showcasing uptime and incident reports.",
+});
 
 const retrieveLogs = (path: string) => {
   return logs.value?.find((i) => i._path.includes(path.split("/")[2]));

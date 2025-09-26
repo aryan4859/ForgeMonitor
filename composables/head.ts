@@ -1,7 +1,7 @@
 export const useCustomHead = (
-  title = "StatusBase",
-  description = "Free & Open Source uptime monitoring tool and beautiful status pages with incidents reports. Powered by Nuxt Content!",
-  image = "https://statusbase.vercel.app/og.png"
+  title = "ForgeMonitor - Uptime Monitoring & Status Pages",
+  description = "A simple, free, and open-source uptime monitoring and status page service.",
+  image = "https://flagforge.xyz/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fflagforge-logo.bf890a45.png&w=256&q=75"
 ) => {
   useHead({
     title,
@@ -15,7 +15,7 @@ export const useCustomHead = (
         content: description,
       },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@zernonia" },
+      { name: "twitter:site", content: "@flagforge" },
       { name: "twitter:title", content: title },
       {
         name: "twitter:description",
@@ -24,12 +24,12 @@ export const useCustomHead = (
       { name: "twitter:image", content: image },
       { property: "og:type", content: "website" },
       { property: "og:title", content: title },
-      { property: "og:url", content: "https://statusbase.vercel.app/" },
+      { property: "og:url", content: "https://flagforge.xyz/" },
       { property: "og:image", content: image ?? image },
       {
         property: "og:description",
         content: description,
       },
     ],
-  })
-}
+  });
+};
