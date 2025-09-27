@@ -1,3 +1,4 @@
 url: "https://api.flagforge.xyz/"
 title: "FlagForge Backend API"
 description: "The backend API for FlagForge."
+tags: ["api", "backend", "flagforge"]

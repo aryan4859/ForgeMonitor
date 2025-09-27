@@ -1,3 +1,4 @@
 url: "https://staging.flagforge.xyz"
 title: "FlagForge Staging"
 description: "For testing vulnerabilities and exploits."
+tags: ["staging", "testing", "flagforge"]
