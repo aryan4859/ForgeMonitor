@@ -66,8 +66,8 @@ done
 
 if [[ $commit == true ]]
 then 
-  git config --global user.name 'zernonia'
-  git config --global user.email 'zernonia@gmail.com'
+  git config --global user.name 'aryan4859'
+  git config --global user.email 'aryan.shrestha@presidential.edu.np'
   git add -A --force content/logs/
   git commit -am '[Automated] Update Health Check Logs'
   git push
